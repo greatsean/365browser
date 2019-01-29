@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.MenuItem;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
@@ -161,6 +162,22 @@ public class BookmarkActionBar extends SelectableListToolbar<BookmarkId>
         }
 
         setNavigationButton(NAVIGATION_BUTTON_BACK);
+    }
+
+    @Override
+    public void setTitle(int resId) {
+        setTitle(getContext().getText(resId));
+    }
+
+    private TextView titleTv;
+
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle("");
+        if (titleTv==null){
+            titleTv  = (TextView) findViewById(com.mogoweb.browser.R.id.toolbar_title);
+        }
+        titleTv.setText(title);
     }
 
     @Override

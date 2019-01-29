@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2017 The Chromium Authors. All rights reserved.
+<?xml version="1.0" encoding="utf-8"?><!-- Copyright 2015 The Chromium Authors. All rights reserved.
      Use of this source code is governed by a BSD-style license that can be
      found in the LICENSE file. -->
 
-<org.chromium.chrome.browser.bookmarks.BookmarkActionBar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:chrome="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/bookmark_action_bar"
+    android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@color/bookmark_window_bg"
@@ -22,4 +20,4 @@
         android:textSize="14sp"
         android:textColor="#0F0F0F"
         />
-</org.chromium.chrome.browser.bookmarks.BookmarkActionBar>
+</android.support.v7.widget.Toolbar>

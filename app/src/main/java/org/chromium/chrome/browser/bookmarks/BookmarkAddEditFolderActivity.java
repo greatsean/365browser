@@ -18,6 +18,7 @@ import org.chromium.chrome.R;
 import org.chromium.chrome.browser.SynchronousInitializationActivity;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkModelObserver;
+import org.chromium.chrome.browser.util.ViewUtils;
 import org.chromium.chrome.browser.widget.EmptyAlertEditText;
 import org.chromium.chrome.browser.widget.TintedDrawable;
 import org.chromium.components.bookmarks.BookmarkId;
@@ -138,16 +139,16 @@ public class BookmarkAddEditFolderActivity extends SynchronousInitializationActi
 
         mParentTextView.setOnClickListener(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        Toolbar toolbar = ViewUtils.initToolbar(this);
+        TextView titleTv= (TextView) toolbar.findViewById(R.id.toolbar_title);
         if (mIsAddMode) {
             getSupportActionBar().setTitle(R.string.add_folder);
+            titleTv.setText(R.string.add_folder);
             updateParent(mModel.getDefaultFolder());
         } else {
             // Edit mode
-            getSupportActionBar().setTitle(R.string.edit_folder);
+//            getSupportActionBar().setTitle(R.string.edit_folder);
+            titleTv.setText(R.string.edit_folder);
             BookmarkItem bookmarkItem = mModel.getBookmarkById(mFolderId);
             updateParent(bookmarkItem.getParentId());
             mFolderTitle.setText(bookmarkItem.getTitle());
@@ -180,6 +181,7 @@ public class BookmarkAddEditFolderActivity extends SynchronousInitializationActi
             mDeleteButton = menu.add(R.string.bookmark_action_bar_delete)
                     .setIcon(TintedDrawable.constructTintedDrawable(
                             getResources(), R.drawable.btn_trash))
+//                    .setIcon(R.drawable.icon_shuqiantitle_del_forblack)
                     .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM);
         }
 

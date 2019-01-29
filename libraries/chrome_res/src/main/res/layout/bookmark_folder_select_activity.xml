@@ -9,11 +9,7 @@
     android:minHeight="@dimen/bookmark_minimum_dialog_size_tablet"
     android:orientation="vertical" >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+    <include layout="@layout/custom_common_header"/>
 
     <View
         android:layout_width="match_parent"

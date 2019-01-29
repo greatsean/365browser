@@ -5,6 +5,7 @@
 package org.chromium.chrome.browser.bookmarks;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
+import org.chromium.chrome.browser.util.ViewUtils;
 import org.chromium.chrome.browser.widget.TintedImageButton;
 import org.chromium.chrome.browser.widget.selection.SelectableItemView;
 import org.chromium.components.bookmarks.BookmarkId;
@@ -112,11 +114,20 @@ abstract class BookmarkRow extends SelectableItemView<BookmarkId> implements Boo
                     }
                     return true;
                 }
-
+                private int[] icons={R.drawable.icon_shuqian_choose,
+                        R.drawable.icon_shuqian_edit,
+                        R.drawable.icon_shuqian_move,
+                        R.drawable.icon_shuqian_del,
+                };
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
-                    View view = super.getView(position, convertView, parent);
+                    TextView view = (TextView) super.getView(position, convertView, parent);
                     view.setEnabled(isEnabled(position));
+
+                    Context context = getContext();
+                    Drawable leftDrawable = context.getResources().getDrawable(icons[position]);
+                    view.setCompoundDrawablesWithIntrinsicBounds(leftDrawable,null,null,null);
+                    view.setCompoundDrawablePadding(ViewUtils.dip2px(context,12));
                     return view;
                 }
             });

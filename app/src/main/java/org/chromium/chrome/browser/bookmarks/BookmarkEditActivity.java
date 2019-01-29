@@ -6,7 +6,6 @@ package org.chromium.chrome.browser.bookmarks;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +16,7 @@ import org.chromium.chrome.R;
 import org.chromium.chrome.browser.SynchronousInitializationActivity;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkItem;
 import org.chromium.chrome.browser.bookmarks.BookmarkBridge.BookmarkModelObserver;
+import org.chromium.chrome.browser.util.ViewUtils;
 import org.chromium.chrome.browser.widget.EmptyAlertEditText;
 import org.chromium.chrome.browser.widget.TintedDrawable;
 import org.chromium.components.bookmarks.BookmarkId;
@@ -79,9 +79,7 @@ public class BookmarkEditActivity extends SynchronousInitializationActivity {
             }
         });
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ViewUtils.initToolbar(this);
 
         updateViewContent(false);
     }
@@ -107,6 +105,7 @@ public class BookmarkEditActivity extends SynchronousInitializationActivity {
         mDeleteButton = menu.add(R.string.bookmark_action_bar_delete)
                 .setIcon(TintedDrawable.constructTintedDrawable(
                         getResources(), R.drawable.btn_trash))
+//                .setIcon(R.drawable.icon_shuqiantitle_del_forblack)
                 .setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM);
 
         return super.onCreateOptionsMenu(menu);

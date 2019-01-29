@@ -4,11 +4,20 @@
 
 package org.chromium.chrome.browser.util;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Region;
 import android.support.annotation.DrawableRes;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.mogoweb.browser.R;
 
 /**
  * View-related utility methods.
@@ -60,6 +69,7 @@ public class ViewUtils {
      * Return the position of {@code childView} relative to {@code rootView}.  {@code childView}
      * must be a child of {@code rootView}.  This returns the relative layout position, which does
      * not include translations.
+     *
      * @param rootView    The parent of {@code childView} to calculate the position relative to.
      * @param childView   The {@link View} to calculate the position of.
      * @param outPosition The resulting position with the format [x, y].
@@ -81,6 +91,7 @@ public class ViewUtils {
      * Return the position of {@code childView} relative to {@code rootView}.  {@code childView}
      * must be a child of {@code rootView}.  This returns the relative draw position, which includes
      * translations.
+     *
      * @param rootView    The parent of {@code childView} to calculate the position relative to.
      * @param childView   The {@link View} to calculate the position of.
      * @param outPosition The resulting position with the format [x, y].
@@ -124,4 +135,49 @@ public class ViewUtils {
         view.setBackgroundResource(resource);
         view.setPadding(left, top, right, bottom);
     }
+
+    private static final String TAG = "ViewUtils";
+
+    public static Toolbar initToolbar(AppCompatActivity activity, boolean showBackbtn) {
+        Toolbar toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
+        TextView titleTv = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        activity.setSupportActionBar(toolbar);
+        CharSequence title = activity.getTitle();
+        titleTv.setText(title);
+        Log.i(TAG, "initToolbar: " + title);
+        ActionBar supportActionBar = activity.getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setDisplayHomeAsUpEnabled(showBackbtn);
+            supportActionBar.setDisplayShowTitleEnabled(false);
+        }
+        toolbar.setOverflowIcon(activity.getResources().getDrawable(R.drawable.icon_yinchangxiang));
+        return toolbar;
+    }
+
+    public static Toolbar initToolbar(AppCompatActivity activity) {
+        return initToolbar(activity, true);
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     * @param context
+     * @param dpValue
+     * @return
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     * @param context
+     * @param pxValue
+     * @return
+     */
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
 }
