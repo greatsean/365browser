@@ -42,6 +42,15 @@ public class BookmarkFolderRow extends BookmarkRow {
     BookmarkItem setBookmarkId(BookmarkId bookmarkId) {
         BookmarkItem item = super.setBookmarkId(bookmarkId);
         mTitleView.setText(item.getTitle());
+        BookmarkModel model = mDelegate.getModel();
+        if (model != null) {
+            int childCount = model.getChildCount(bookmarkId);
+            if (childCount==0){
+                mSubTitleView.setText("没有书签");
+            }else {
+                mSubTitleView.setText(String.format("%d个书签", childCount));
+            }
+        }
         return item;
     }
 }

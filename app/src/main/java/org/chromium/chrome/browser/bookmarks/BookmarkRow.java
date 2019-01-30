@@ -5,6 +5,7 @@
 package org.chromium.chrome.browser.bookmarks;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -32,6 +33,7 @@ abstract class BookmarkRow extends SelectableItemView<BookmarkId> implements Boo
 
     protected ImageView mIconImageView;
     protected TextView mTitleView;
+    protected TextView mSubTitleView;
     protected TintedImageButton mMoreIcon;
 
     protected BookmarkDelegate mDelegate;
@@ -132,9 +134,14 @@ abstract class BookmarkRow extends SelectableItemView<BookmarkId> implements Boo
                 }
             });
             mPopupMenu.setAnchorView(view);
-            mPopupMenu.setWidth(getResources().getDimensionPixelSize(
-                            R.dimen.bookmark_item_popup_width));
+            Resources resources = getResources();
+            mPopupMenu.setWidth(resources.getDimensionPixelSize(
+                    R.dimen.bookmark_item_popup_width));
             mPopupMenu.setVerticalOffset(-view.getHeight());
+//            mPopupMenu.setVerticalOffset(-resources.getDimensionPixelSize(
+//                    R.dimen.bookmark_item_popup_v_offset));
+//            mPopupMenu.setHorizontalOffset(-resources.getDimensionPixelSize(
+//                    R.dimen.bookmark_item_popup_h_offset));
             mPopupMenu.setModal(true);
             mPopupMenu.setOnItemClickListener(new OnItemClickListener() {
                 @Override
@@ -177,6 +184,7 @@ abstract class BookmarkRow extends SelectableItemView<BookmarkId> implements Boo
 
         mIconImageView = (ImageView) findViewById(R.id.bookmark_image);
         mTitleView = (TextView) findViewById(R.id.title);
+        mSubTitleView = (TextView) findViewById(R.id.subTitle);
 
         mMoreIcon = (TintedImageButton) findViewById(R.id.more);
         mMoreIcon.setVisibility(VISIBLE);

@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 
 import org.chromium.base.ApiCompatibilityUtils;
@@ -70,9 +71,17 @@ public class BookmarkItemRow extends BookmarkRow implements LargeIconCallback {
     @Override
     BookmarkItem setBookmarkId(BookmarkId bookmarkId) {
         BookmarkItem item = super.setBookmarkId(bookmarkId);
-        mUrl = item.getUrl();
+        String url = item.getUrl();
+        mUrl = url;
         mIconImageView.setImageDrawable(null);
         mTitleView.setText(item.getTitle());
+        if (!TextUtils.isEmpty(url)&& url.contains("://")){
+            //去掉头部协议名
+            url = url.substring(url.indexOf("://") + 3);
+            //去掉末尾的顺斜杠"/"
+            url = url.lastIndexOf("/")!=-1?url.substring(0,url.length()-1):url;
+            mSubTitleView.setText(url);
+        }
         mDelegate.getLargeIconBridge().getLargeIconForUrl(mUrl, mMinIconSize, this);
         return item;
     }

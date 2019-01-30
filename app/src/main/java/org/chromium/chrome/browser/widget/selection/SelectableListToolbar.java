@@ -352,7 +352,7 @@ public class SelectableListToolbar<E> extends Toolbar implements SelectionObserv
                 break;
             case NAVIGATION_BUTTON_SELECTION_BACK:
 //                iconResId = R.drawable.ic_arrow_back_white_24dp;
-                iconResId = R.drawable.icon_title_backforblack;
+                iconResId = R.drawable.icon_title_backforblack_forwhite;
                 contentDescriptionId = R.string.accessibility_cancel_selection;
                 break;
             default:

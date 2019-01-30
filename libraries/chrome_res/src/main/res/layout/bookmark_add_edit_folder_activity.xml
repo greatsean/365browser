@@ -36,10 +36,11 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="24dp"
+                android:textColor="@color/default_text_color"
                 android:hint="@string/title"
                 android:imeOptions="flagNoExtractUi"
                 android:inputType="textCapSentences|textAutoCorrect"
-                android:textSize="24sp"
+                android:textSize="14sp"
                 chrome:alertMessage="@string/bookmark_missing_title"  />
 
             <TextView
@@ -51,8 +52,7 @@
                 android:layout_marginTop="24dp"
                 android:text="@string/bookmark_parent_folder"
                 android:textColor="@color/bookmark_detail_section"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/parent_folder"
@@ -62,7 +62,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="32dp"
                 android:textColor="@color/dark_mode_tint"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
         </LinearLayout>
     </ScrollView>
 
