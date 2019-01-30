@@ -9,3 +9,6 @@
 /captures
 *.pyc
 *.iml
+/.idea
+/gradle/wrapper/gradle-4.10-all.zip
+app/*.keystore
