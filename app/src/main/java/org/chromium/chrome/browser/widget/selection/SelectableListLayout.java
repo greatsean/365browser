@@ -267,7 +267,7 @@ public class SelectableListLayout<E>
         mSearchEmptyStringResId = searchEmptyStringResId;
 
         mEmptyView.setCompoundDrawablesWithIntrinsicBounds(null, emptyDrawable, null, null);
-        mEmptyView.setText(mEmptyStringResId);
+//        mEmptyView.setText(mEmptyStringResId);
 
         return mEmptyView;
     }
@@ -351,7 +351,7 @@ public class SelectableListLayout<E>
     public void onStartSearch() {
         mRecyclerView.setItemAnimator(null);
         mToolbarShadow.setVisibility(View.VISIBLE);
-        mEmptyView.setText(mSearchEmptyStringResId);
+//        mEmptyView.setText(mSearchEmptyStringResId);
     }
 
     /**
@@ -360,7 +360,7 @@ public class SelectableListLayout<E>
     public void onEndSearch() {
         mRecyclerView.setItemAnimator(mItemAnimator);
         setToolbarShadowVisibility();
-        mEmptyView.setText(mEmptyStringResId);
+//        mEmptyView.setText(mEmptyStringResId);
     }
 
     /**

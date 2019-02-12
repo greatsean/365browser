@@ -461,6 +461,11 @@
         <item name="android:dropDownHorizontalOffset">0dp</item>
     </style>
 
+    <style name="BookmarkFloatLabelTextAppearance" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/bookmark_float_label_color</item>
+    </style>
+
     <!-- Contextual Search styles -->
     <style name="ContextualSearchTextViewLayout">
         <item name="android:layout_width">match_parent</item>

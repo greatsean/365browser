@@ -140,7 +140,7 @@ public class BookmarkManager implements BookmarkDelegate, SearchDelegate {
         mSelectableListLayout = selectableList;
         mSelectableListLayout.initializeEmptyView(
                 VectorDrawableCompat.create(
-                        mActivity.getResources(), R.drawable.bookmark_big, mActivity.getTheme()),
+                        mActivity.getResources(), R.drawable.icon_shuqian_nodata, mActivity.getTheme()),
                 R.string.bookmarks_folder_empty, R.string.bookmark_no_result);
 
         mAdapter = new BookmarkItemsAdapter(activity);

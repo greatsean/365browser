@@ -263,10 +263,12 @@ public class BookmarkFolderSelectActivity extends SynchronousInitializationActiv
 
         List<FolderListEntry> mEntryList = new ArrayList<>();
 
+        private BookmarkModel mModel;
         public FolderListAdapter(Context context) {
             mBasePadding = context.getResources()
                     .getDimensionPixelSize(R.dimen.bookmark_folder_item_left);
             mPaddingIncrement = mBasePadding * 2;
+            mModel = new BookmarkModel();
         }
 
         @Override
@@ -314,6 +316,7 @@ public class BookmarkFolderSelectActivity extends SynchronousInitializationActiv
             setUpIcons(entry, textView);
             setUpPadding(entry, textView);
 
+//            System.out.println("标签数："+mModel.getChildCount(entry.mId));
             return textView;
         }
 
